@@ -27,15 +27,9 @@ function cacheFunction(cb) {
   // usá hasOwnProperty!
   let cache = {};
   return function (arg) {
-    if (cache.hasOwnProperty(arg)) {
+      if(!cache.hasOwnProperty(arg)) cache[arg] = cb(arg);
       return cache[arg]
     }
-    else {
-      let resultado = cb(arg)
-      cache[arg] = resultado
-      return cache[arg]
-    }
-  }
 }
 
 // Bind
